@@ -4,16 +4,16 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 		<style type="text/css">
-.blinking-cursor {
-  font-weight: 100;
-  font-size: 30px;
-  color: #2E3D48;
-  -webkit-animation: 1s blink step-end infinite;
-  -moz-animation: 1s blink step-end infinite;
-  -ms-animation: 1s blink step-end infinite;
-  -o-animation: 1s blink step-end infinite;
-  animation: 1s blink step-end infinite;
-}
+	.blinking-cursor {
+	  font-weight: 100;
+	  font-size: 30px;
+	  color: #2E3D48;
+	  -webkit-animation: 1s blink step-end infinite;
+	  -moz-animation: 1s blink step-end infinite;
+	  -ms-animation: 1s blink step-end infinite;
+	  -o-animation: 1s blink step-end infinite;
+	  animation: 1s blink step-end infinite;
+	}
 
 @keyframes "blink" {
   from, to {
@@ -70,10 +70,49 @@
 }
 
 
-.item_b {
-  grid-column-start: 3;
-  grid-column-end: 3;
-}
+		.item_b {
+			grid-column-start: 3;
+			grid-column-end: 3;
+		}
+
+		div.prompt_container {
+			width: 60vw;
+		}
+		div.prompt {
+			display: inline-block;
+			overflow: hidden;
+		}
+		div.input {
+			width: 0;
+			animation: typing 3s steps(30, end);
+			overflow: hidden;
+			display: inline-block;
+			white-space: nowrap;
+			animation-fill-mode: forwards;
+		}
+		@keyframes typing {
+			from {
+				width: 0%;
+			}
+			to {
+				width: 30vw;
+			}
+		}
+
+		div.output {
+			visibility: hidden;
+			animation-name: show;
+			animation-fill-mode: forwards;
+		}
+		@keyframes show {
+			from {
+			visibility: hidden;
+			}
+			to {
+			visibility: visible;
+			}
+		}
+
 		:root {
 		    font-family: "VT323", monospace;
 		    font-weight: 400;
@@ -152,20 +191,32 @@
 			<div class="item_a">
 				Last login: Fri Feb 21 18:00:00 2025 from 1.1.1.1 <br>
 				<br>
-				hackerspace> drill UmeBSD.se <br>
+				
+				<div class="prompt_container">
+				<div class="prompt">hackerspace></div> <div class="input">drill UmeBSD.se</div>
+				</div><br>
+
+				<div class="output" style="animation-delay: 3s;">
 				;; ANSWER SECTION: <br>
 				Fabriksgatan 88 kv.&emsp;3600	IN	A	194.9.94.86 <br>
-				903 31 Umeå.&emsp;&emsp;&emsp;3600	IN	A	194.9.94.85 <br>
+				903 31 Umeå.&emsp;&emsp;&emsp;3600	IN	A	194.9.94.85 
+				</div><br>
 
 				<br>
-				hackerspace> finger <br>
+				<div class="prompt_container">
+				<div class="prompt output" style="animation-delay: 4s;">hackerspace></div> <div class="input" style="animation-delay: 4.5s;">finger</div>
+				</div><br>
+				<div class="output" style="animation-delay: 5s;">
 				Login&emsp;Name&emsp;TTY&emsp;Idle&emsp;Login&emsp;Time <br>
 				ove&emsp;&emsp;&ensp;_&emsp;&emsp;u0&emsp;0:0&emsp;&emsp;Fri&emsp;18:00 <br>
 				jastrom&emsp;_&emsp;&emsp;u0&emsp;0:0&emsp;&emsp;Fri&emsp;18:00 <br>
 				sanderp&emsp;_&emsp;&emsp;u0&emsp;0:0&emsp;&emsp;Fri&emsp;18:00 <br>
 				drobban&emsp;_&emsp;&emsp;u0&emsp;0:0&emsp;&emsp;Fri&emsp;18:00 <br>
 				<br>
-				hackerspace> shutdown -h 2502231800<span class="blinking-cursor">&#9647;</span><br>
+				</div>
+				<div class="prompt_container">
+				<div class="prompt output" style="animation-delay: 6s">hackerspace></div> <div class="input" style="animation-delay: 6s;">shutdown -h 20250223<span class="blinking-cursor">&#9647;</span></div>
+				</div><br><br>
 
 
 			</div>
