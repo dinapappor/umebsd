@@ -187,6 +187,9 @@
 		</style>
 	</head>
 	<body class="old-crt-monitor">
+		<audio id="musicplayer" autoplay loop>
+		  <source src="./hum.mp3" />
+		</audio>
 		<div class="retro-container grid-container">
 			<div class="item_a">
 				Last login: Fri Feb 21 18:00:00 2025 from 1.1.1.1 <br>
@@ -206,12 +209,13 @@
 				<div class="prompt_container">
 				<div class="prompt output" style="animation-delay: 4s;">hackerspace></div> <div class="input" style="animation-delay: 4.5s;">finger</div>
 				</div><br>
-				<div class="output" style="animation-delay: 5s;">
+				<div class="output" style="animation-delay: 5.5s;">
 				Login&emsp;Name&emsp;TTY&emsp;Idle&emsp;Login&emsp;Time <br>
 				ove&emsp;&emsp;&ensp;_&emsp;&emsp;u0&emsp;0:0&emsp;&emsp;Fri&emsp;18:00 <br>
-				jastrom&emsp;_&emsp;&emsp;u0&emsp;0:0&emsp;&emsp;Fri&emsp;18:00 <br>
-				sanderp&emsp;_&emsp;&emsp;u0&emsp;0:0&emsp;&emsp;Fri&emsp;18:00 <br>
-				drobban&emsp;_&emsp;&emsp;u0&emsp;0:0&emsp;&emsp;Fri&emsp;18:00 <br>
+				jastrom&emsp;_&emsp;&emsp;u1&emsp;0:0&emsp;&emsp;Fri&emsp;18:00 <br>
+				IcePic&emsp;_&emsp;&emsp;:0&emsp;0:0&emsp;&emsp;Fri&emsp;18:00 <br>
+				sanderp&emsp;_&emsp;&emsp;u2&emsp;0:0&emsp;&emsp;Fri&emsp;18:00 <br>
+				drobban&emsp;_&emsp;&emsp;u3&emsp;0:0&emsp;&emsp;Fri&emsp;18:00 <br>
 				<br>
 				</div>
 				<div class="prompt_container">
@@ -234,5 +238,14 @@
 				</div>
 			</div>
 		</div>
+		<script>
+			const audio = document.getElementById("musicplayer");
+			document.addEventListener('click', onMouseUpdate, false);
+
+			function onMouseUpdate(e) {
+				/* Yea welcome to the 90's */
+				audio.play();
+			}
+		</script>
 	</body>
 </html>
