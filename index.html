@@ -1,12 +1,92 @@
-<html>
-    <head>
-    <title> UmeBSD 2026 </title>
-    </head>
-    <body>
-    <center><img src="puffy.jpeg"></center>
-    <br />
-    <center><img src="envelope.gif"><a href="https://umebsd-2026.confetti.events">REGISTRATION</a><img src="envelope.gif"></center>
-    <br/>
-    <br/>
-    <center><img src="valid_html.png"></center>
-    </body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UmeBSD — Enter the cabin</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: #050505; }
+    body { display: grid; place-items: center; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .scene {
+      position: relative;
+      width: min(100vw, 100vh);
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: #000;
+    }
+    .scene img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      image-rendering: pixelated;
+      user-select: none;
+      pointer-events: none;
+    }
+    .scene .lit { opacity: 0; transition: opacity 110ms linear; }
+    .scene.cabin-active .lit { opacity: 1; }
+    .cabin-link {
+      position: absolute;
+      left: 68.0%;
+      top: 29.3%;
+      width: 19.6%;
+      height: 14.6%;
+      display: block;
+      border-radius: 12px;
+      cursor: pointer;
+      outline: none;
+    }
+    .cabin-link:focus-visible {
+      box-shadow: 0 0 0 3px #fff, 0 0 0 7px #e4b13d;
+    }
+    .hint {
+      position: absolute;
+      left: 50%;
+      bottom: 2.5%;
+      transform: translateX(-50%);
+      margin: 0;
+      padding: .45rem .7rem;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 999px;
+      background: rgba(0,0,0,.7);
+      color: #f7e8b5;
+      font-size: clamp(.65rem, 1.6vw, .9rem);
+      letter-spacing: .04em;
+      opacity: .78;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .cabin-link:hover + .hint { opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scene .lit { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="scene" id="scene">
+    <img src="assets/umebsd-off.png" alt="UmeBSD midsummer pixel-art scene">
+    <img class="lit" src="assets/umebsd-on.png" alt="" aria-hidden="true">
+    <a class="cabin-link" id="cabinLink" href="registration.html" aria-label="Enter the glowing cabin and open UmeBSD registration"></a>
+    <p class="hint">The cabin looks inviting…</p>
+  </main>
+
+  <script>
+    const scene = document.getElementById('scene');
+    const cabin = document.getElementById('cabinLink');
+
+    function lightOn() { scene.classList.add('cabin-active'); }
+    function lightOff() { scene.classList.remove('cabin-active'); }
+
+    cabin.addEventListener('mouseenter', lightOn);
+    cabin.addEventListener('mouseleave', lightOff);
+    cabin.addEventListener('focus', lightOn);
+    cabin.addEventListener('blur', lightOff);
+    cabin.addEventListener('touchstart', lightOn, { passive: true });
+  </script>
+</body>
+</html>
